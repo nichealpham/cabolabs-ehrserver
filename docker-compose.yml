@@ -10,12 +10,13 @@ services:
       - ./opts:/usr/local/tomcat/opts
       - ./versions:/usr/local/tomcat/versions
       # can be used to load a custom yml
-      # - ./grails-app/conf/application.yml:/app/config.yml
+      - ./grails-app/conf/application.yml:/app/config.yml
     depends_on:
       - db
     environment:
       - SPRING_CONFIG_LOCATION=/app/config.yml
       - EHRSERVER_MYSQL_DB_BEHAVIOUR=create-drop
+      # - EHRSERVER_MYSQL_DB_BEHAVIOUR=update
       - EHRSERVER_MYSQL_DB_HOST=db
       - EHRSERVER_MYSQL_DB_PORT=3306
       - EHRSERVER_MYSQL_DB_USERNAME=ehrserver2
@@ -29,6 +30,9 @@ services:
     image: mysql:5.7
     volumes:
       - database:/var/lib/mysql
+      # - ehr-server_database:/var/lib/mysql
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_DATABASE=ehrserver2
       - MYSQL_USER=ehrserver2
@@ -36,3 +40,5 @@ services:
       - MYSQL_ROOT_PASSWORD=root
 volumes:
   database: {}
+  # ehr-server_database:
+  #   external: true

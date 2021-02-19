@@ -219,35 +219,36 @@ dataSource:
     driverClassName: com.mysql.cj.jdbc.Driver
     username: ${EHRSERVER_MYSQL_DB_USERNAME}
     password: ${EHRSERVER_MYSQL_DB_PASSWORD}
+    properties:
+        jmxEnabled: true
+        initialSize: 5
+        maxActive: 50
+        minIdle: 5
+        maxIdle: 25
+        maxWait: 10000
+        maxAge: 600000
+        timeBetweenEvictionRunsMillis: 5000
+        minEvictableIdleTimeMillis: 60000
+        validationQuery: SELECT 1
+        validationQueryTimeout: 3
+        validationInterval: 15000
+        testOnBorrow: true
+        testWhileIdle: true
+        testOnReturn: false
+        jdbcInterceptors: ConnectionState
+        defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
-            url: jdbc:mysql://localhost:3306/ehrserver2?useTimezone=true&serverTimezone=UTC
+            dbCreate: ${EHRSERVER_MYSQL_DB_BEHAVIOUR}
+            url: jdbc:mysql://${EHRSERVER_MYSQL_DB_HOST}:${EHRSERVER_MYSQL_DB_PORT}/${EHRSERVER_DB_NAME}?useTimezone=true&serverTimezone=UTC
     test:
         dataSource:
-            dbCreate: update
-            url: jdbc:mysql://localhost:3306/ehrserver2_test?useTimezone=true&serverTimezone=UTC
+            dbCreate: ${EHRSERVER_MYSQL_DB_BEHAVIOUR}
+            url: jdbc:mysql://${EHRSERVER_MYSQL_DB_HOST}:${EHRSERVER_MYSQL_DB_PORT}/${EHRSERVER_DB_NAME}?useTimezone=true&serverTimezone=UTC
     production:
         dataSource:
             dbCreate: ${EHRSERVER_MYSQL_DB_BEHAVIOUR}
             url: jdbc:mysql://${EHRSERVER_MYSQL_DB_HOST}:${EHRSERVER_MYSQL_DB_PORT}/${EHRSERVER_DB_NAME}?useTimezone=true&serverTimezone=UTC
-            properties:
-                jmxEnabled: true
-                initialSize: 5
-                maxActive: 50
-                minIdle: 5
-                maxIdle: 25
-                maxWait: 10000
-                maxAge: 600000
-                timeBetweenEvictionRunsMillis: 5000
-                minEvictableIdleTimeMillis: 60000
-                validationQuery: SELECT 1
-                validationQueryTimeout: 3
-                validationInterval: 15000
-                testOnBorrow: true
-                testWhileIdle: true
-                testOnReturn: false
-                jdbcInterceptors: ConnectionState
-                defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+            

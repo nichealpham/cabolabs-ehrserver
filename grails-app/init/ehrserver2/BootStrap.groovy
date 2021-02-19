@@ -38,42 +38,42 @@ class BootStrap {
       log.info "extending base classes"
       extendClasses()
 
-      log.info "creating configuration items"
-      createConfig()
+      // log.info "creating configuration items"
+      // createConfig()
 
-      log.info "creating plans"
-      createPlans()
+      // log.info "creating plans"
+      // createPlans()
 
-      log.info "creating roles"
-      createRoles()
+      // log.info "creating roles"
+      // createRoles()
 
-      log.info "creating default users"
-      createUsers()
+      // log.info "creating default users"
+      // createUsers()
 
-      log.info "creating default organizations"
-      defaultOrganizations()
+      // log.info "creating default organizations"
+      // defaultOrganizations()
 
-      log.info "assigning roles"
-      assignRoles()
+      // log.info "assigning roles"
+      // assignRoles()
 
       log.info "template setup"
       setupTemplates()
 
-      log.info "query groups"
-      createQueryGroups()
+      // log.info "query groups"
+      // createQueryGroups()
 
       log.info "registering JSON marshallers"
       registerJSONMarshallers()
       registerXMLMarshallers()
 
-      log.info "calculating initial accounts repo size"
-      calculateRepoSizes()
+      // log.info "calculating initial accounts repo size"
+      // calculateRepoSizes()
 
       log.info "loading openEHR terminologies"
       loadOpenEHRTerminologies()
 
-      log.info "creating terminology ids"
-      createTerminologyIds()
+      // log.info "creating terminology ids"
+      // createTerminologyIds()
 
       log.info "creating request maps"
       createRequestMaps()

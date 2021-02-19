@@ -1,34 +1,34 @@
 version: '3.0'
 services:
-  web:
-    build: .
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./terminology:/app/terminology
-      - ./grails-app/conf/:/usr/local/tomcat/webapps/config
-      - ./opts:/usr/local/tomcat/opts
-      - ./versions:/usr/local/tomcat/versions
-    depends_on:
-      - db
-    environment:
-      - SPRING_CONFIG_LOCATION=/app/config.yml
-      - EHRSERVER_MYSQL_DB_BEHAVIOUR=create-drop
-      # - EHRSERVER_MYSQL_DB_BEHAVIOUR=update
-      - EHRSERVER_MYSQL_DB_HOST=db
-      - EHRSERVER_MYSQL_DB_PORT=3306
-      - EHRSERVER_MYSQL_DB_USERNAME=ehrserver2
-      - EHRSERVER_MYSQL_DB_PASSWORD=ehrserver2
-      - EHRSERVER_DB_NAME=ehrserver2
-      - EHRSERVER_ALLOW_WEB_USER_REGISTER=false
-      - EHRSERVER_REST_SECRET=d9507256-e461-4336-a6ec-2f412796f134
-      - EHRSERVER_EMAIL_HOST=localhost
-      - EHRSERVER_EMAIL_PORT=2525
+  # web:
+  #   build: .
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./terminology:/app/terminology
+  #     - ./grails-app/conf/:/usr/local/tomcat/webapps/config
+  #     - ./opts:/usr/local/tomcat/opts
+  #     - ./versions:/usr/local/tomcat/versions
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     - SPRING_CONFIG_LOCATION=/app/config.yml
+  #     - EHRSERVER_MYSQL_DB_BEHAVIOUR=create-drop
+  #     # - EHRSERVER_MYSQL_DB_BEHAVIOUR=update
+  #     - EHRSERVER_MYSQL_DB_HOST=db
+  #     - EHRSERVER_MYSQL_DB_PORT=3306
+  #     - EHRSERVER_MYSQL_DB_USERNAME=ehrserver2
+  #     - EHRSERVER_MYSQL_DB_PASSWORD=ehrserver2
+  #     - EHRSERVER_DB_NAME=ehrserver2
+  #     - EHRSERVER_ALLOW_WEB_USER_REGISTER=false
+  #     - EHRSERVER_REST_SECRET=d9507256-e461-4336-a6ec-2f412796f134
+  #     - EHRSERVER_EMAIL_HOST=localhost
+  #     - EHRSERVER_EMAIL_PORT=2525
   db:
     image: mysql:5.7
     volumes:
-      - database:/var/lib/mysql
-      # - cabolabs-ehrserver_database:/var/lib/mysql
+      # - database:/var/lib/mysql
+      - cabolabs-ehrserver_database:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:
@@ -37,6 +37,6 @@ services:
       - MYSQL_PASSWORD=ehrserver2
       - MYSQL_ROOT_PASSWORD=root
 volumes:
-  database: {}
-  # cabolabs-ehrserver_database:
-  #   external: true
+  # database: {}
+  cabolabs-ehrserver_database:
+    external: true

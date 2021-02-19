@@ -1,6 +1,6 @@
 ---
 server:
-   port: 8090
+   port: 8080
 
 ---
 # If you add a supported language you need also to translate the messages_YOUR_LANGUAGE.properties file.
@@ -219,24 +219,24 @@ dataSource:
     driverClassName: com.mysql.cj.jdbc.Driver
     username: ${EHRSERVER_MYSQL_DB_USERNAME}
     password: ${EHRSERVER_MYSQL_DB_PASSWORD}
-    properties:
-        jmxEnabled: true
-        initialSize: 5
-        maxActive: 50
-        minIdle: 5
-        maxIdle: 25
-        maxWait: 10000
-        maxAge: 600000
-        timeBetweenEvictionRunsMillis: 5000
-        minEvictableIdleTimeMillis: 60000
-        validationQuery: SELECT 1
-        validationQueryTimeout: 3
-        validationInterval: 15000
-        testOnBorrow: true
-        testWhileIdle: true
-        testOnReturn: false
-        jdbcInterceptors: ConnectionState
-        defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+    # properties:
+    #     jmxEnabled: true
+    #     initialSize: 5
+    #     maxActive: 50
+    #     minIdle: 5
+    #     maxIdle: 25
+    #     maxWait: 10000
+    #     maxAge: 600000
+    #     timeBetweenEvictionRunsMillis: 5000
+    #     minEvictableIdleTimeMillis: 60000
+    #     validationQuery: SELECT 1
+    #     validationQueryTimeout: 3
+    #     validationInterval: 15000
+    #     testOnBorrow: true
+    #     testWhileIdle: true
+    #     testOnReturn: false
+    #     jdbcInterceptors: ConnectionState
+    #     defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
 environments:
     development:

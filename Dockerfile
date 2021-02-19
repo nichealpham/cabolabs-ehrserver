@@ -6,8 +6,8 @@ ENV GRAILS_HOME=/opt/grails-3.3.10
 ENV PATH="${GRAILS_HOME}/bin:${PATH}"
 WORKDIR /app
 # COPY . .
-# RUN git clone https://github.com/nichealpham/cabolabs-ehrserver.git .
-RUN git clone https://github.com/ppazos/cabolabs-ehrserver.git .
+RUN git clone https://github.com/nichealpham/cabolabs-ehrserver.git .
+# RUN git clone https://github.com/ppazos/cabolabs-ehrserver.git .
 RUN /opt/grails-3.3.10/bin/grails war
 
 FROM tomcat:8-jdk8-openjdk

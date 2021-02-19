@@ -50,8 +50,8 @@ class BootStrap {
       // log.info "creating default users"
       // createUsers()
 
-      // log.info "creating default organizations"
-      // defaultOrganizations()
+      log.info "creating or load default organizations"
+      defaultOrganizations()
 
       // log.info "assigning roles"
       // assignRoles()
@@ -810,7 +810,7 @@ class BootStrap {
          // Create default QueryGroup per organization, see https://github.com/ppazos/cabolabs-ehrserver/issues/982
          organizations.each { org ->
 
-            new QueryGroup(name:'Ungrouped', organizationUid:org.uid).save(flush:true)
+            // new QueryGroup(name:'Ungrouped', organizationUid:org.uid).save(flush:true)
 
             // only for FS config, create the organization folders
             if (optService instanceof com.cabolabs.ehrserver.openehr.OptFSService)
@@ -833,7 +833,7 @@ class BootStrap {
          organizations.each { org ->
             account.addToOrganizations(org)
          }
-         account.save(failOnError:true, flush:true)
+         // account.save(failOnError:true, flush:true)
 
 
          // Assign plan
